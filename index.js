@@ -3,6 +3,7 @@ import { createServer } from 'node:http';
 import path from 'path';
 import { Server } from 'socket.io';
 import onoff from 'onoff';
+import './iothub.js';
 
 var relais = new onoff.Gpio(17+512, 'out'); //use GPIO pin 17, and specify that it is output
 console.log(relais);
