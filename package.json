@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1",
-    "rpio": "^2.4.2",
+    "onoff": "^6.0.3",
     "socket.io": "^4.8.1"
   }
 }
