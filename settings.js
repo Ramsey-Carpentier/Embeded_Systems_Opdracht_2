@@ -1,1 +1,1 @@
-export const connectionString = "HostName=iothubhn2024.azure-devices.net;DeviceId=rpi-embed-js;SharedAccessKey=/sianOogovtBXBg+9dAbYggZJ+n53PguvOTJ62nj/kQ="
+export const connectionString = "HostName=IOTHUB-ES.azure-devices.net;DeviceId=RPI;SharedAccessKey=PZh+GhJX843CsJeswXLSMqpAbLO/hXDjAme5pwGMlcg="

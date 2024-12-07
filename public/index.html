@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Socket.IO chat</title>
+  <title>Socket.IO Chat</title>
   <style>
     body {
       margin: 0;
       padding-bottom: 3rem;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    .status {
+      font-size: 18px;
+      margin: 10px 0;
+      background-color: blue;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
     }
 
     #form {
@@ -59,16 +92,123 @@
     #messages>li:nth-child(odd) {
       background: #efefef;
     }
+
+    #gauge_div {
+      width: 100%;
+      height: 250px;
+      max-width: 600px;
+      margin: 0 auto;
+      display: block;
+      padding: 50px;
+    }
+
+    #toggle-relais1,
+    #toggle-relais2 {
+      margin: 10px 20px;
+      font-size: 18px;
+    }
+
+    #toggle-relais1, #toggle-relais2 {
+      background-color: #008CBA;
+    }
+
+    #toggle-relais1:hover, #toggle-relais2:hover {
+      background-color: #007B9E;
+    }
+
+    @media (max-width: 600px) {
+      #gauge_div {
+        width: 90%;
+      }
+    }
+     .gauge {
+      width: 100%;
+      max-width: 250px;
+      font-family: "Roboto", sans-serif;
+      font-size: 20px;
+      color: #004033;
+      margin-top: 50px;
+      margin-left 50px;
+    }
+
+    .gauge__body {
+      width: 100%;
+      height: 0;
+      padding-bottom: 50%;
+      background: #b4c0be;
+      position: relative;
+      border-top-left-radius: 100% 200%;
+      border-top-right-radius: 100% 200%;
+      overflow: hidden;
+    }
+
+    .gauge__fill {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: inherit;
+      height: 100%;
+      background: #009578;
+      transform-origin: center top;
+      transform: rotate(0turn);
+      transition: transform 0.3s ease-out, background 0.3s ease-out;
+    }
+
+    .gauge__cover {
+      width: 75%;
+      height: 150%;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 25%;
+      box-sizing: border-box;
+      color: black;
+    }
   </style>
 </head>
-
 <body>
-  <button id="toggle-relais">toggle relais</button>
+  <h1>Opdracht 2 Embed</h1>
+  <div>
+    <h2>Inputs</h2>
+    <p class="status" id="input1-status">Input 1 (GPIO 18): Unknown</p>
+    <p class="status" id="input2-status">Input 2 (GPIO 15): Unknown</p>
+  </div>
+  <div>
+    <h2>Outputs</h2>
+    <button id="toggle-relais1">Toggle Relais 1</button>
+    <button id="toggle-relais2">Toggle Relais 2</button>
+  </div>
+  <div>
+    <h2>Temperatuur</h2>
+    <div class="gauge">
+      <div class="gauge__body">
+        <div class="gauge__fill" id="temperature-fill"></div>
+        <div class="gauge__cover" id="temperature-display">0 GC</div>
+      </div>
+    </div>
+    <p id="temperature-status"></p>
+  </div>
+  </div>
+  <div>
+    <h2>IOT HUB</h2>
+    <div id="alarm-status" style="background-color: green; padding: 10px;">Alarm Inactief</div>
+    <div id="alarm-temperature" style="padding: 10px;">Alarm Temperatuur: 50 °C</div>
+    <button id="reset-alarm">Reset Alarm</button>
+
+  </div>
   <ul id="messages"></ul>
   <form id="form" action="">
-    <input id="input" autocomplete="off" /><button>Send</button>
+    <input id="input" autocomplete="off" />
+    <button>Send</button>
   </form>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/script.js"></script>
+  <script src="/script.js"></script> <!-- Je eigen script.js -->
 </body>
 </html>
+
