@@ -4,8 +4,10 @@ import path from 'path';
 import { Server } from 'socket.io';
 import onoff from 'onoff';
 import i2c from 'i2c-bus';
-import { Client, Message } from 'azure-iot-device';
-import { Mqtt } from 'azure-iot-device-mqtt';
+import pkg from 'azure-iot-device';
+import { Mqtt } from 'azure-iot-device-mqtt'; // MQTT importeren
+
+const { Client, Message } = pkg; // Haal de Client en Message uit het default object
 
 // Configuratie voor relais en inputs
 var relais1 = new onoff.Gpio(17 + 512, 'out'); // GPIO 17 als uitgang
@@ -21,7 +23,7 @@ const TC74_ADDRESS = 0x4a; // Standaard I2C-adres van de TC74-sensor
 const i2cBus = i2c.openSync(I2C_BUS_NUMBER); // Open I2C-bus
 
 // Setup voor Azure IoT Hub
-const connectionString = "your-iot-hub-connection-string"; // Vervang door je eigen verbindingsstring
+const connectionString = "HostName=IOTHUB-Opdracht2-embed.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=qP1XjGxf1NV8KsIJvkyPddEGInQ2QusDWAIoTMByhME="; // Vervang door je eigen verbindingsstring
 const client = Client.fromConnectionString(connectionString, Mqtt);
 
 // Verbind met IoT Hub en Device Twin
